@@ -27,7 +27,7 @@ func Dajarep(text string) []string {
 	sentences := getSentences(text)
 	var dajares []string
 	for i := 0; i < len(sentences); i++ {
-		if IsDajare(sentences[i]) == true {
+		if isDajare(sentences[i]) == true {
 			dajares = append(dajares, sentences[i].str)
 		}
 	}
@@ -35,7 +35,7 @@ func Dajarep(text string) []string {
 }
 
 //駄洒落かどうかを評価する。
-func IsDajare(sen sentence) bool {
+func isDajare(sen sentence) bool {
 	words := sen.words
 	for i := 0; i < len(words); i++ {
 		w := words[i]
