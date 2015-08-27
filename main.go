@@ -40,7 +40,7 @@ func main() {
 		}
 	}
 
-	s := Sharep(text)
+	s := Dajarep(text)
 	for i := 0; i < len(s); i++ {
 		fmt.Println(s[i])
 	}
