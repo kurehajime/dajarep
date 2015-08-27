@@ -3,8 +3,6 @@
 
 ![dajarep](https://cloud.githubusercontent.com/assets/4569916/9517659/7641d0ca-4cec-11e5-98d6-7b0a64354877.gif)
 
-## dajarep
-
 駄洒落を含んだ文章ファイル(例:test.txt)を・・・
 
 ```
@@ -38,3 +36,13 @@ $ dajarep test.txt
 イカは如何なものか
 ```
 
+## インストール方法
+
+[ここ](https://github.com/kurehajime/dajarep/releases)から実行ファイルをダウンロードできます。
+
+
+Go言語の開発環境がある場合はgo getでもインストールできます。
+
+```
+go get -u github.com/kurehajime/dajarep
+```
