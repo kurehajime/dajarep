@@ -29,7 +29,7 @@ func TestDajarep(t *testing.T) {
 イカは如何なものか`
 	res := strings.Join(Dajarep(input), "\n")
 	if res != ans {
-		t.Errorf("Share(x) =\n%s\n, want \n%s", res, ans)
+		t.Errorf("Dajarep(x) =\n%s\n, want \n%s", res, ans)
 		return
 	}
 }
