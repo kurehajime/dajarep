@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+var (
+	t = kagome.NewTokenizer()
+)
+
 //単語
 type word struct {
 	str   string
@@ -80,14 +84,12 @@ func fixSentence(text string) string {
 func getSentences(text string) []sentence {
 	var sentences []sentence
 
-	t := kagome.NewTokenizer()
 	text = strings.Replace(text, "。", "\n", -1)
 	text = strings.Replace(text, ".", "\n", -1)
 	text = strings.Replace(text, "?", "?\n", -1)
 	text = strings.Replace(text, "!", "!\n", -1)
 	text = strings.Replace(text, "？", "？\n", -1)
 	text = strings.Replace(text, "！", "！\n", -1)
-
 	senstr := strings.Split(text, "\n")
 
 	for i := 0; i < len(senstr); i++ {
