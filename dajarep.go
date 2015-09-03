@@ -27,15 +27,15 @@ type sentence struct {
 }
 
 //駄洒落を返す
-func Dajarep(text string) []string {
+func Dajarep(text string) (dajares []string,debugStrs []string) {
 	sentences := getSentences(text)
-	var dajares []string
 	for i := 0; i < len(sentences); i++ {
-		if ok, _ := isDajare(sentences[i]); ok == true {
+		if ok, kana := isDajare(sentences[i]); ok == true {
 			dajares = append(dajares, sentences[i].str)
+			debugStrs = append(debugStrs, kana)
 		}
 	}
-	return dajares
+	return dajares,debugStrs
 }
 
 //駄洒落かどうかを評価する。
@@ -51,7 +51,7 @@ func isDajare(sen sentence) (bool, string) {
 			hit_kana2 := r_kana.FindAllString(fixSentence(sen.kana), -1)
 			//ある単語における　原文の一致文字列数<フリガナでの一致文字列数　→　駄洒落の読みが存在
 			if len(hit_str) < int(math.Max(float64(len(hit_kana)), float64(len(hit_kana2)))) {
-				return true, w.str
+				return true, w.kana
 			}
 		}
 	}

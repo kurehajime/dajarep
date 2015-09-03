@@ -17,8 +17,11 @@ func main() {
 	var err error
 	var ok bool = false
 	var encode string
+	var debug bool
 
 	flag.StringVar(&encode, "e", "", "encoding")
+	flag.BoolVar(&debug, "d", false, "debug mode")
+
 	flag.Parse()
 
 	if len(flag.Args()) == 0 {
@@ -38,9 +41,13 @@ func main() {
 		fmt.Fprintln(os.Stderr, err.Error())
 	}
 	//dajarep
-	s := Dajarep(text)
+	s ,d:= Dajarep(text)
 	for i := 0; i < len(s); i++ {
-		fmt.Println(s[i])
+		if !debug{
+			fmt.Println(s[i])			
+		}else{
+			fmt.Println(s[i]+"["+  d[i]+"]" )
+		}
 	}
 
 }
