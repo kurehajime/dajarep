@@ -47,6 +47,13 @@ Go言語の開発環境がある場合はgo getでもインストールできま
 go get -u github.com/kurehajime/dajarep
 ```
 
+## オプション
+
+-d	：掛かってる文字を表示  
+-e  <エンコーディング>：エンコーディング指定  
+-i	：インタラクティブモード  
+
+
 ## 解説記事
 
 [文章からダジャレのみを抜き出すコマンドを作ってみた](http://qiita.com/kurehajime/items/a922d42dff5e0f03d32c)
