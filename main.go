@@ -11,6 +11,7 @@ import (
 	"golang.org/x/text/transform"
 	"io/ioutil"
 	"os"
+	"runtime"
 )
 
 func main() {
@@ -19,8 +20,14 @@ func main() {
 	var encode string
 	var debug bool
 	var interactive bool
-
-	flag.StringVar(&encode, "e", "", "encoding")
+	var default_encoding string
+	
+	 if runtime.GOOS == "windows" {
+		default_encoding = "sjis"
+	}else{
+		default_encoding = "utf-8"
+	}
+	flag.StringVar(&encode, "e", default_encoding, "encoding")
 	flag.BoolVar(&debug, "d", false, "debug mode")
 	flag.BoolVar(&interactive, "i", false, "interactive mode")
 
@@ -67,7 +74,11 @@ func main() {
 			if s.Text() == "" {
 				break
 			}
-			_, d := Dajarep(s.Text())
+			text, err := transEnc(s.Text(), encode)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err.Error())
+			}
+			_, d := Dajarep(text)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
 					fmt.Println("-> " + d[i])
