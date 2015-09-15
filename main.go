@@ -21,10 +21,10 @@ func main() {
 	var debug bool
 	var interactive bool
 	var default_encoding string
-	
-	 if runtime.GOOS == "windows" {
+
+	if runtime.GOOS == "windows" {
 		default_encoding = "sjis"
-	}else{
+	} else {
 		default_encoding = "utf-8"
 	}
 	flag.StringVar(&encode, "e", default_encoding, "encoding")
