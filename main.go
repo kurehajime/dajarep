@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"github.com/ikawaha/kagome"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/transform"
 	"io/ioutil"
@@ -15,57 +16,83 @@ import (
 func main() {
 	var text string
 	var err error
-	var ok bool = false
 	var encode string
 	var debug bool
+	var interactive bool
 
 	flag.StringVar(&encode, "e", "", "encoding")
 	flag.BoolVar(&debug, "d", false, "debug mode")
+	flag.BoolVar(&interactive, "i", false, "interactive mode")
 
 	flag.Parse()
 
-	if len(flag.Args()) == 0 {
-		text, ok = readPipe()
+	if interactive == true {
+		fmt.Print("> ")
+	} else if len(flag.Args()) == 0 {
+		text, err = readPipe()
 	} else if flag.Arg(0) == "-" {
-		text, ok = readStdin()
+		text, err = readStdin()
 	} else {
-		text, ok = readFileByArg(flag.Arg(0))
+		text, err = readFileByArg(flag.Arg(0))
 	}
-	if ok == false {
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
 		os.Exit(1)
 	}
 
-	//encode
-	text, err = transEnc(text, encode)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err.Error())
+	if t == nil {
+		t = kagome.NewTokenizer()
 	}
-	//dajarep
-	s, d := Dajarep(text)
-	for i := 0; i < len(s); i++ {
-		if !debug {
-			fmt.Println(s[i])
-		} else {
-			fmt.Println(s[i] + "[" + d[i] + "]")
+
+	if interactive == false {
+		text, err := transEnc(text, encode)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err.Error())
+		}
+		s, d := Dajarep(text)
+		for i := 0; i < len(s); i++ {
+			if !debug {
+				fmt.Println(s[i])
+			} else {
+				fmt.Println(s[i] + "[" + d[i] + "]")
+			}
+		}
+	} else {
+		//interactive mode
+		s := bufio.NewScanner(os.Stdin)
+		for s.Scan() {
+			if s.Err() != nil {
+				fmt.Fprintln(os.Stderr, s.Err())
+			}
+			if s.Text() == "" {
+				break
+			}
+			_, d := Dajarep(s.Text())
+			if len(d) > 0 {
+				for i := 0; i < len(d); i++ {
+					fmt.Println("-> " + d[i])
+				}
+			} else {
+				fmt.Println("")
+			}
+			fmt.Print("> ")
 		}
 	}
-
 }
 
-func readPipe() (string, bool) {
+func readPipe() (string, error) {
 	stats, _ := os.Stdin.Stat()
 	if stats != nil && (stats.Mode()&os.ModeCharDevice) == 0 {
 		bytes, err := ioutil.ReadAll(os.Stdin)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, err.Error())
-			return "", false
+			return "", err
 		}
-		return string(bytes), true
+		return string(bytes), nil
 	} else {
-		return "", false
+		return "", nil
 	}
 }
-func readStdin() (string, bool) {
+func readStdin() (string, error) {
 	var text string
 	s := bufio.NewScanner(os.Stdin)
 	for s.Scan() {
@@ -75,19 +102,17 @@ func readStdin() (string, bool) {
 		text += s.Text() + "\n"
 	}
 	if s.Err() != nil {
-		fmt.Fprintln(os.Stderr, s.Err().Error())
-		return "", false
+		return "", s.Err()
 	}
-	return text, true
+	return text, nil
 }
 
-func readFileByArg(path string) (string, bool) {
+func readFileByArg(path string) (string, error) {
 	content, err := ioutil.ReadFile(path)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err.Error())
-		return "", false
+		return "", err
 	}
-	return string(content), true
+	return string(content), nil
 }
 
 //「Golangで文字コード判定」qiita.com/nobuhito/items/ff782f64e32f7ed95e43
