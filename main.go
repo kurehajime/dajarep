@@ -41,12 +41,12 @@ func main() {
 		fmt.Fprintln(os.Stderr, err.Error())
 	}
 	//dajarep
-	s ,d:= Dajarep(text)
+	s, d := Dajarep(text)
 	for i := 0; i < len(s); i++ {
-		if !debug{
-			fmt.Println(s[i])			
-		}else{
-			fmt.Println(s[i]+"["+  d[i]+"]" )
+		if !debug {
+			fmt.Println(s[i])
+		} else {
+			fmt.Println(s[i] + "[" + d[i] + "]")
 		}
 	}
 

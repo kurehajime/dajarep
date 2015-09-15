@@ -27,7 +27,7 @@ func TestDajarep(t *testing.T) {
 その意見にはついていけん
 傘を貸さない
 イカは如何なものか`
-	d , _:=Dajarep(input)
+	d, _ := Dajarep(input)
 	res := strings.Join(d, "\n")
 	if res != ans {
 		t.Errorf("Dajarep(x) =\n%s\n, want \n%s", res, ans)

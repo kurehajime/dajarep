@@ -27,7 +27,7 @@ type sentence struct {
 }
 
 //駄洒落を返す
-func Dajarep(text string) (dajares []string,debugStrs []string) {
+func Dajarep(text string) (dajares []string, debugStrs []string) {
 	sentences := getSentences(text)
 	for i := 0; i < len(sentences); i++ {
 		if ok, kana := isDajare(sentences[i]); ok == true {
@@ -35,7 +35,7 @@ func Dajarep(text string) (dajares []string,debugStrs []string) {
 			debugStrs = append(debugStrs, kana)
 		}
 	}
-	return dajares,debugStrs
+	return dajares, debugStrs
 }
 
 //駄洒落かどうかを評価する。
