@@ -55,6 +55,7 @@ func main() {
 		text, err := transEnc(text, encode)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err.Error())
+			os.Exit(1)
 		}
 		s, d := Dajarep(text)
 		for i := 0; i < len(s); i++ {
@@ -70,6 +71,7 @@ func main() {
 		for s.Scan() {
 			if s.Err() != nil {
 				fmt.Fprintln(os.Stderr, s.Err())
+				os.Exit(1)
 			}
 			if s.Text() == "" {
 				break
@@ -77,6 +79,7 @@ func main() {
 			text, err := transEnc(s.Text(), encode)
 			if err != nil {
 				fmt.Fprintln(os.Stderr, err.Error())
+				os.Exit(1)
 			}
 			_, d := Dajarep(text)
 			if len(d) > 0 {
