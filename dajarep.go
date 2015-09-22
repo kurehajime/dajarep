@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	t *kagome.Tokenizer
+	token  *kagome.Tokenizer
 )
 
 //単語
@@ -28,9 +28,6 @@ type sentence struct {
 
 //駄洒落を返す
 func Dajarep(text string) (dajares []string, debugStrs []string) {
-	if t == nil {
-		t = kagome.NewTokenizer()
-	}
 	sentences := getSentences(text)
 	for i := 0; i < len(sentences); i++ {
 		if ok, kana := isDajare(sentences[i]); ok == true {
@@ -86,6 +83,7 @@ func fixSentence(text string) string {
 //テキストからsentenceオブジェクトを作る。
 func getSentences(text string) []sentence {
 	var sentences []sentence
+	t:= getTokenizer()
 
 	text = strings.Replace(text, "。", "\n", -1)
 	text = strings.Replace(text, ".", "\n", -1)
@@ -119,4 +117,11 @@ func getSentences(text string) []sentence {
 			})
 	}
 	return sentences
+}
+//Tokenizerを取得
+func getTokenizer() *kagome.Tokenizer{
+	if token == nil {
+		token = kagome.NewTokenizer()
+	}
+	return token
 }

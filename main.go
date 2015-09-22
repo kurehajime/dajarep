@@ -6,7 +6,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"github.com/ikawaha/kagome"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/transform"
 	"io/ioutil"
@@ -47,9 +46,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	if t == nil {
-		t = kagome.NewTokenizer()
-	}
+	//あらかじめTokenizerを読み込んで時短
+	_ = getTokenizer()
 
 	if interactive == false {
 		text, err := transEnc(text, encode)
