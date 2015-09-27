@@ -77,6 +77,10 @@ func fixWord(text string) string {
 func fixSentence(text string) string {
 	text = strings.Replace(text, "ッ", "", -1)
 	text = strings.Replace(text, "ー", "", -1)
+	text = strings.Replace(text, "、", "", -1)
+	text = strings.Replace(text, ",", "", -1)
+	text = strings.Replace(text, "　", "", -1)
+	text = strings.Replace(text, " ", "", -1)
 	return text
 }
 
