@@ -46,9 +46,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	//あらかじめTokenizerを読み込んで時短
-	_ = getTokenizer()
-
 	if interactive == false {
 		text, err := transEnc(text, encode)
 		if err != nil {

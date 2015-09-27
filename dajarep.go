@@ -2,15 +2,16 @@
 package main
 
 import (
-	"github.com/ikawaha/kagome"
 	"math"
 	"regexp"
 	"strings"
+
+	"github.com/ikawaha/kagome/tokenizer"
 )
 
-var (
-	token  *kagome.Tokenizer
-)
+func init() {
+	tokenizer.SysDic()
+}
 
 //単語
 type word struct {
@@ -87,7 +88,7 @@ func fixSentence(text string) string {
 //テキストからsentenceオブジェクトを作る。
 func getSentences(text string) []sentence {
 	var sentences []sentence
-	t:= getTokenizer()
+	t := tokenizer.New()
 
 	text = strings.Replace(text, "。", "\n", -1)
 	text = strings.Replace(text, ".", "\n", -1)
@@ -121,11 +122,4 @@ func getSentences(text string) []sentence {
 			})
 	}
 	return sentences
-}
-//Tokenizerを取得
-func getTokenizer() *kagome.Tokenizer{
-	if token == nil {
-		token = kagome.NewTokenizer()
-	}
-	return token
 }
