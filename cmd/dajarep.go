@@ -11,6 +11,8 @@ import (
 	"io/ioutil"
 	"os"
 	"runtime"
+
+	"github.com/kurehajime/dajarep"
 )
 
 func main() {
@@ -52,7 +54,7 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-		s, d := Dajarep(text)
+		s, d := dajarep.Dajarep(text)
 		for i := 0; i < len(s); i++ {
 			if !debug {
 				fmt.Println(s[i])
@@ -76,7 +78,7 @@ func main() {
 				fmt.Fprintln(os.Stderr, err.Error())
 				os.Exit(1)
 			}
-			_, d := Dajarep(text)
+			_, d := dajarep.Dajarep(text)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
 					fmt.Println("-> " + d[i])
