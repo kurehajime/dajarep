@@ -1,5 +1,4 @@
-// sharep_test.go
-package main
+package dajarep
 
 import (
 	"strings"

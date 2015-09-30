@@ -1,5 +1,4 @@
-// sharep.go
-package main
+package dajarep
 
 import (
 	"math"
