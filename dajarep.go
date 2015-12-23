@@ -61,15 +61,25 @@ func isDajare(sen sentence) (bool, string) {
 //置き換え可能な文字を考慮した正規表現を返す。
 func fixWord(text string) string {
 	text = strings.Replace(text, "ッ", "[ツッ]?", -1)
-	text = strings.Replace(text, "ー", "[ー]?", -1)
 	text = strings.Replace(text, "ァ", "[アァ]?", -1)
 	text = strings.Replace(text, "ィ", "[イィ]?", -1)
 	text = strings.Replace(text, "ゥ", "[ウゥ]?", -1)
 	text = strings.Replace(text, "ェ", "[エェ]?", -1)
 	text = strings.Replace(text, "ォ", "[オォ]?", -1)
+	re := regexp.MustCompile("([アカサタナハマヤラワャ])ー")
+	text = re.ReplaceAllString(text, "$1[アァ]?")
+	re = regexp.MustCompile("([イキシチニヒミリ])ー")
+	text = re.ReplaceAllString(text, "$1[イィ]?")
+	re = regexp.MustCompile("([ウクスツヌフムユルュ])ー")
+	text = re.ReplaceAllString(text, "$1[ウゥ]?")
+	re = regexp.MustCompile("([エケセテネへメレ])ー")
+	text = re.ReplaceAllString(text, "$1[エェ]?")
+	re = regexp.MustCompile("([オコソトノホモヨロヲョ])ー")
+	text = re.ReplaceAllString(text, "$1[ウゥオォ]?")
 	text = strings.Replace(text, "ャ", "[ヤャ]", -1)
 	text = strings.Replace(text, "ュ", "[ユュ]", -1)
 	text = strings.Replace(text, "ョ", "[ヨョ]", -1)
+	text = strings.Replace(text, "ー", "[ー]?", -1)
 	return text
 }
 
