@@ -72,11 +72,7 @@ func main() {
 			if s.Text() == "" {
 				break
 			}
-			text, err := transEnc(s.Text(), encode)
-			if err != nil {
-				fmt.Fprintln(os.Stderr, err.Error())
-				os.Exit(1)
-			}
+			text:=s.Text()
 			_, d := dajarep.Dajarep(text)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
