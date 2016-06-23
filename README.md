@@ -1,4 +1,7 @@
 # dajarep
+
+[![CircleCI](https://circleci.com/gh/kurehajime/dajarep.svg?style=svg)](https://circleci.com/gh/kurehajime/dajarep)
+
 ダジャレを検索するコマンド
 
 ![dajarep](https://cloud.githubusercontent.com/assets/4569916/9517659/7641d0ca-4cec-11e5-98d6-7b0a64354877.gif)
