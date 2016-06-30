@@ -72,7 +72,7 @@ func main() {
 			if s.Text() == "" {
 				break
 			}
-			text:=s.Text()
+			text := s.Text()
 			_, d := dajarep.Dajarep(text)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {

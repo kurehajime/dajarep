@@ -26,7 +26,7 @@ type sentence struct {
 	words []word
 }
 
-//駄洒落を返す
+//Dajarep :駄洒落を返す
 func Dajarep(text string) (dajares []string, debugStrs []string) {
 	sentences := getSentences(text)
 	for i := 0; i < len(sentences); i++ {
@@ -44,13 +44,13 @@ func isDajare(sen sentence) (bool, string) {
 	for i := 0; i < len(words); i++ {
 		w := words[i]
 		if w.wtype == "名詞" && len([]rune(w.kana)) > 1 {
-			r_str := regexp.MustCompile(w.str)
-			r_kana := regexp.MustCompile(fixWord(w.kana))
-			hit_str := r_str.FindAllString(sen.str, -1)
-			hit_kana := r_kana.FindAllString(sen.kana, -1)
-			hit_kana2 := r_kana.FindAllString(fixSentence(sen.kana), -1)
+			rStr := regexp.MustCompile(w.str)
+			rKana := regexp.MustCompile(fixWord(w.kana))
+			hitStr := rStr.FindAllString(sen.str, -1)
+			hitKana := rKana.FindAllString(sen.kana, -1)
+			hitKana2 := rKana.FindAllString(fixSentence(sen.kana), -1)
 			//ある単語における　原文の一致文字列数<フリガナでの一致文字列数　→　駄洒落の読みが存在
-			if len(hit_str) < int(math.Max(float64(len(hit_kana)), float64(len(hit_kana2)))) {
+			if len(hitStr) < int(math.Max(float64(len(hitKana)), float64(len(hitKana2)))) {
 				return true, w.kana
 			}
 		}
