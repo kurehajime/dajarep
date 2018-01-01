@@ -77,7 +77,7 @@ func fixWord(text string) string {
 	re = regexp.MustCompile("([ウクスツヌフムユルュ])ー")
 	text = re.ReplaceAllString(text, "$1[ウゥ]?")
 	re = regexp.MustCompile("([エケセテネへメレ])ー")
-	text = re.ReplaceAllString(text, "$1[エェ]?")
+	text = re.ReplaceAllString(text, "$1[イィエェ]?")
 	re = regexp.MustCompile("([オコソトノホモヨロヲョ])ー")
 	text = re.ReplaceAllString(text, "$1[ウゥオォ]?")
 	text = strings.Replace(text, "ャ", "[ヤャ]", -1)
