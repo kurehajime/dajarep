@@ -53,7 +53,7 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-		s, d := dajarep.Dajarep(text)
+		s, d := dajarep.Dajarep(text, debug)
 		for i := 0; i < len(s); i++ {
 			if !debug {
 				fmt.Println(s[i])
@@ -73,7 +73,7 @@ func main() {
 				break
 			}
 			text := s.Text()
-			_, d := dajarep.Dajarep(text)
+			_, d := dajarep.Dajarep(text, debug)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
 					fmt.Println("-> " + d[i])
