@@ -41,7 +41,7 @@ func TestDajarep(t *testing.T) {
 バンダナの出番だな
 知事が縮む
 鶏には取り憑かない`
-	d, _ := Dajarep(input)
+	d, _ := Dajarep(input, false)
 	res := strings.Join(d, "\n")
 	if res != ans {
 		t.Errorf("Dajarep(x) =\n%s\n, want \n%s", res, ans)
