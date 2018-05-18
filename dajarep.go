@@ -50,7 +50,7 @@ func isDajare(sen sentence) (bool, string) {
 			hitKana4 := rKana.FindAllString(fixSentence(sen.yomi), -1)
 
 			//ある単語における　原文の一致文字列数<フリガナでの一致文字列数　→　駄洒落の読みが存在
-			if len(hitStr) < most(len(hitKana1), len(hitKana2), len(hitKana3), len(hitKana4)) {
+			if len(hitStr) > 0 && len(hitStr) < most(len(hitKana1), len(hitKana2), len(hitKana3), len(hitKana4)) {
 				return true, w.kana
 			}
 		}
