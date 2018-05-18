@@ -26,10 +26,14 @@ type sentence struct {
 
 //Dajarep :駄洒落を返す
 func Dajarep(text string, debug bool) (dajares []string, debugStrs []string) {
-	sentences := getSentences(text)
-	for i := 0; i < len(sentences); i++ {
-		if ok, kana := isDajare(sentences[i], debug); ok == true {
-			dajares = append(dajares, sentences[i].str)
+	sentencesN := getSentences(text, tokenizer.Normal)
+	sentencesS := getSentences(text, tokenizer.Search)
+	for i := 0; i < len(sentencesN); i++ {
+		if ok, kana := isDajare(sentencesN[i], debug); ok == true {
+			dajares = append(dajares, sentencesN[i].str)
+			debugStrs = append(debugStrs, kana)
+		} else if ok, kana = isDajare(sentencesS[i], debug); ok == true {
+			dajares = append(dajares, sentencesS[i].str)
 			debugStrs = append(debugStrs, kana)
 		}
 	}
@@ -127,7 +131,7 @@ func fixSentence(text string) string {
 }
 
 //テキストからsentenceオブジェクトを作る。
-func getSentences(text string) []sentence {
+func getSentences(text string, mode tokenizer.TokenizeMode) []sentence {
 	var sentences []sentence
 	t, err := tokenizer.New(ipa.Dict())
 	if err != nil {
@@ -143,7 +147,7 @@ func getSentences(text string) []sentence {
 	senstr := strings.Split(text, "\n")
 
 	for i := 0; i < len(senstr); i++ {
-		tokens := t.Tokenize(senstr[i])
+		tokens := t.Analyze(senstr[i], mode)
 		var words []word
 		var kana string
 		var yomi string
