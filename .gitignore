@@ -7,3 +7,4 @@ bin.zip
 *.zip
 
 cmd/dajarep/dajarep
+.DS_Store
