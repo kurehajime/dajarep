@@ -1,7 +1,6 @@
 package dajarep
 
 import (
-	"math"
 	"regexp"
 	"strings"
 
@@ -23,6 +22,7 @@ type word struct {
 type sentence struct {
 	str   string
 	kana  string
+	yomi  string
 	words []word
 }
 
@@ -47,10 +47,13 @@ func isDajare(sen sentence) (bool, string) {
 			rStr := regexp.MustCompile(w.str)
 			rKana := regexp.MustCompile(fixWord(w.kana))
 			hitStr := rStr.FindAllString(sen.str, -1)
-			hitKana := rKana.FindAllString(sen.kana, -1)
+			hitKana1 := rKana.FindAllString(sen.kana, -1)
 			hitKana2 := rKana.FindAllString(fixSentence(sen.kana), -1)
+			hitKana3 := rKana.FindAllString(sen.yomi, -1)
+			hitKana4 := rKana.FindAllString(fixSentence(sen.yomi), -1)
+
 			//ある単語における　原文の一致文字列数<フリガナでの一致文字列数　→　駄洒落の読みが存在
-			if len(hitStr) < int(math.Max(float64(len(hitKana)), float64(len(hitKana2)))) {
+			if len(hitStr) < most(len(hitKana1), len(hitKana2), len(hitKana3), len(hitKana4)) {
 				return true, w.kana
 			}
 		}
@@ -115,6 +118,8 @@ func getSentences(text string) []sentence {
 		tokens := t.Tokenize(senstr[i])
 		var words []word
 		var kana string
+		var yomi string
+
 		for j := 0; j < len(tokens); j++ {
 			tk := tokens[j]
 			ft := tk.Features()
@@ -125,6 +130,7 @@ func getSentences(text string) []sentence {
 				}
 				words = append(words, w)
 				kana += ft[7]
+				yomi += ft[8]
 			}
 		}
 		sentences = append(sentences,
@@ -132,7 +138,18 @@ func getSentences(text string) []sentence {
 				str:   senstr[i],
 				words: words,
 				kana:  kana,
+				yomi:  yomi,
 			})
 	}
 	return sentences
+}
+
+func most(num ...int) int {
+	i := 0
+	for _, n := range num {
+		if n > i {
+			i = n
+		}
+	}
+	return i
 }
