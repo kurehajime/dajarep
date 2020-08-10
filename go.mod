@@ -1,3 +1,8 @@
 module github.com/kurehajime/dajarep
 
-require github.com/ikawaha/kagome v1.8.1 // indirect
+go 1.14
+
+require (
+	github.com/ikawaha/kagome-dict-ipa v1.0.0
+	github.com/ikawaha/kagome/v2 v2.0.3
+)
