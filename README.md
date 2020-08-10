@@ -1,6 +1,5 @@
 # dajarep
 
-[![CircleCI](https://circleci.com/gh/kurehajime/dajarep.svg?style=svg)](https://circleci.com/gh/kurehajime/dajarep)
 [![GoDoc](https://godoc.org/github.com/kurehajime/dajarep?status.svg)](https://godoc.org/github.com/kurehajime/dajarep)
 
 ダジャレを検索するコマンド
