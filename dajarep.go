@@ -4,12 +4,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ikawaha/kagome/tokenizer"
+	ipa "github.com/ikawaha/kagome-dict-ipa"
+	"github.com/ikawaha/kagome/v2/tokenizer"
 )
-
-func init() {
-	tokenizer.SysDic()
-}
 
 //単語
 type word struct {
@@ -104,7 +101,10 @@ func fixSentence(text string) string {
 //テキストからsentenceオブジェクトを作る。
 func getSentences(text string) []sentence {
 	var sentences []sentence
-	t := tokenizer.New()
+	t, err := tokenizer.New(ipa.Dict())
+	if err != nil {
+		panic(err)
+	}
 
 	text = strings.Replace(text, "。", "\n", -1)
 	text = strings.Replace(text, ".", "\n", -1)

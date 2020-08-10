@@ -1,6 +1,4 @@
 out:
-	go get github.com/mitchellh/gox
-	go test
 	rm -rf ./_obj
 	gox -output "_obj/{{.OS}}_{{.Arch}}/{{.Dir}}" ./...
 	mv ./_obj/darwin_386 ./_obj/macos_386
