@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	ipa "github.com/ikawaha/kagome-dict-ipa"
+	ipa "github.com/ikawaha/kagome-dict/ipa"
 	"github.com/ikawaha/kagome/v2/tokenizer"
 )
 
