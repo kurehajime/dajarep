@@ -8,11 +8,20 @@ builds:
   - main: ./cmd/dajarep/main.go
     binary: dajarep
     env:
-      - CGO_ENABLED=0
+      - CGO_ENABLED=0    
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     replacements:
-      darwin: darwin
+      darwin: macos
       linux: linux
       windows: windows
       386: i386
