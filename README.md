@@ -44,10 +44,10 @@ $ dajarep test.txt
 [ここ](https://github.com/kurehajime/dajarep/releases)から実行ファイルをダウンロードできます。
 
 
-Go言語の開発環境がある場合はgo getでもインストールできます。
+Go言語の開発環境がある場合はgo でもインストールできます。
 
 ```
-go get -u github.com/kurehajime/dajarep/...
+go install github.com/kurehajime/dajarep/cmd/dajarep@latest
 ```
 
 ## オプション
