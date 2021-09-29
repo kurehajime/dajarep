@@ -47,7 +47,7 @@ $ dajarep test.txt
 Go言語の開発環境がある場合はgo でもインストールできます。
 
 ```
-go install github.com/kurehajime/dajarep/cmd/dajarep@latest
+ go install github.com/kurehajime/dajarep/cmd/dajarep@v1.9.4
 ```
 
 ## オプション
