@@ -54,12 +54,19 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-		s, d := dajarep.Dajarep(text, debug)
+		s, d := dajarep.Dajarep(text, 2, debug)
 		for i := 0; i < len(s); i++ {
 			if !debug {
 				fmt.Println(s[i])
 			} else {
-				fmt.Println(s[i] + "[" + d[i] + "]")
+				fmt.Print(s[i] + "[")
+				for j := 0; j < len(d[i]); j++ {
+					if j != 0 {
+						fmt.Print(", ")
+					}
+					fmt.Print(d[i][j])
+				}
+				fmt.Println("]")
 			}
 		}
 	} else {
@@ -74,10 +81,17 @@ func main() {
 				break
 			}
 			text := s.Text()
-			_, d := dajarep.Dajarep(text, debug)
+			_, d := dajarep.Dajarep(text, 2, debug)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
-					fmt.Println("-> " + d[i])
+					fmt.Print("-> [")
+					for j := 0; j < len(d[i]); j++ {
+						if j != 0 {
+							fmt.Print(", ")
+						}
+						fmt.Print(d[i][j])
+					}
+					fmt.Println("]")
 				}
 			} else {
 				fmt.Println("")

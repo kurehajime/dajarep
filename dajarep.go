@@ -26,14 +26,14 @@ type sentence struct {
 }
 
 //Dajarep :駄洒落を返す
-func Dajarep(text string, debug bool) (dajares []string, debugStrs []string) {
+func Dajarep(text string, limit int, debug bool) (dajares []string, debugStrs [][]string) {
 	sentencesN := getSentences(text, tokenizer.Normal)
 	sentencesS := getSentences(text, tokenizer.Search)
 	for i := 0; i < len(sentencesN); i++ {
-		if ok, kana := isDajare(sentencesN[i], debug); ok == true {
+		if kana := isDajare(sentencesN[i], limit, debug); len(kana) != 0 {
 			dajares = append(dajares, sentencesN[i].str)
 			debugStrs = append(debugStrs, kana)
-		} else if ok, kana = isDajare(sentencesS[i], debug); ok == true {
+		} else if kana = isDajare(sentencesS[i], limit, debug); len(kana) != 0 {
 			dajares = append(dajares, sentencesS[i].str)
 			debugStrs = append(debugStrs, kana)
 		}
@@ -42,14 +42,14 @@ func Dajarep(text string, debug bool) (dajares []string, debugStrs []string) {
 }
 
 //駄洒落かどうかを評価する。
-func isDajare(sen sentence, debug bool) (bool, string) {
+func isDajare(sen sentence, limit int, debug bool) (hitList []string) {
 	words := sen.words
 	for i := 0; i < len(words); i++ {
 		w := words[i]
 		if debug {
 			fmt.Println(w)
 		}
-		if w.wtype == "名詞" && len([]rune(w.kana)) > 1 {
+		if w.wtype == "名詞" && len([]rune(w.kana)) > limit-1 {
 			rStr := regexp.MustCompile(w.str)
 			rKana := regexp.MustCompile(fixWord(w.kana))
 			hitStr := rStr.FindAllString(sen.str, -1)
@@ -63,11 +63,12 @@ func isDajare(sen sentence, debug bool) (bool, string) {
 				fmt.Println(rKana, len(hitStr), sen.kana, len(hitKana1), fixSentence(sen.kana), len(hitKana2))
 			}
 			if len(hitStr) > 0 && len(hitStr) < most(len(hitKana1), len(hitKana2), len(hitKana3), len(hitKana4)) {
-				return true, w.kana
+				hitList = append(hitList, w.kana)
 			}
 		}
 	}
-	return false, ""
+	return hitList
+
 }
 
 //置き換え可能な文字を考慮した正規表現を返す。
