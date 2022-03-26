@@ -6,12 +6,13 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"github.com/kurehajime/dajarep"
-	"golang.org/x/net/html/charset"
-	"golang.org/x/text/transform"
 	"io/ioutil"
 	"os"
 	"runtime"
+
+	"github.com/theoria24/dajarep"
+	"golang.org/x/net/html/charset"
+	"golang.org/x/text/transform"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/kurehajime/dajarep
+module github.com/theoria24/dajarep
 
 go 1.18
 
