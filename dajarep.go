@@ -63,7 +63,9 @@ func isDajare(sen sentence, limit int, debug bool) (hitList []string) {
 				fmt.Println(rKana, len(hitStr), sen.kana, len(hitKana1), fixSentence(sen.kana), len(hitKana2))
 			}
 			if len(hitStr) > 0 && len(hitStr) < most(len(hitKana1), len(hitKana2), len(hitKana3), len(hitKana4)) {
-				hitList = append(hitList, w.kana)
+				if !contains(hitList, w.kana) {
+					hitList = append(hitList, w.kana)
+				}
 			}
 		}
 	}
@@ -208,4 +210,13 @@ func most(num ...int) int {
 		}
 	}
 	return i
+}
+
+func contains(s []string, e string) bool {
+	for _, v := range s {
+		if e == v {
+			return true
+		}
+	}
+	return false
 }
