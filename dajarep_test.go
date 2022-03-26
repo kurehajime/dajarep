@@ -28,7 +28,8 @@ func TestDajarep(t *testing.T) {
 鶏には取り憑かない
 破壊についての和解
 キャラメルを絡める
-車掌が車窓から手をふる`
+車掌が車窓から手をふる
+社会の境`
 	ans := `アルミ缶の上にあるミカン
 智代子のチョコ
 布団が吹っ飛んだ
@@ -44,7 +45,8 @@ func TestDajarep(t *testing.T) {
 知事が縮む
 鶏には取り憑かない
 キャラメルを絡める
-車掌が車窓から手をふる`
+車掌が車窓から手をふる
+社会の境`
 	d, _ := Dajarep(input, 2, false)
 	res := strings.Join(d, "\n")
 	if res != ans {

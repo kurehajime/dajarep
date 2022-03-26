@@ -124,7 +124,7 @@ func fixWord(text string) string {
 	text = strings.Replace(text, "キ[ヤャ]", "(キ[ヤャ]|カ)", -1)
 	// text = strings.Replace(text, "キ[ユュ]", "(キ[ユュ]|ク)", -1)
 	// text = strings.Replace(text, "キ[ヨョ]", "(キ[ヨョ]|コ)", -1)
-	// text = strings.Replace(text, "シ[ヤャ]", "(シ[ヤャ]|サ)", -1)
+	text = strings.Replace(text, "シ[ヤャ]", "(シ[ヤャ]|サ)", -1)
 	// text = strings.Replace(text, "シ[ユュ]", "(シ[ユュ]|ス)", -1)
 	text = strings.Replace(text, "シ[ヨョ]", "(シ[ヨョ]|ソ)", -1)
 	return text
