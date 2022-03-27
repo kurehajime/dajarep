@@ -169,6 +169,7 @@ func getSentences(text string, mode tokenizer.TokenizeMode) []sentence {
 	text = strings.Replace(text, "!", "!\n", -1)
 	text = strings.Replace(text, "？", "？\n", -1)
 	text = strings.Replace(text, "！", "！\n", -1)
+	text = regexp.QuoteMeta(text)
 	senstr := strings.Split(text, "\n")
 
 	for i := 0; i < len(senstr); i++ {
