@@ -1,0 +1,15 @@
+github.com/ikawaha/kagome-dict v1.0.2 h1:RlrQcNm7AcgBrzBcZC+1sniAWxmOECdeJHpJ5G1XFlU=
+github.com/ikawaha/kagome-dict v1.0.2/go.mod h1:JCwHr4WOrGRsC2cJU3751mJvL1hIAAZVeIrkl8n3jkk=
+github.com/ikawaha/kagome-dict/ipa v1.0.2 h1:vBT1bXZbJpf1Ogw07GDlJmKQ5JyexeeIUJ5DkqcMNwo=
+github.com/ikawaha/kagome-dict/ipa v1.0.2/go.mod h1:CmdUPFC1ISLK+ycFo8J6jYFVngDMuXhWtcdz39jni3A=
+github.com/ikawaha/kagome-dict/uni v1.1.1/go.mod h1:iipUtdM9UhHIfaY7Hq1ITLVix5OBZf/FgxMYZpGe5fg=
+github.com/ikawaha/kagome/v2 v2.4.4 h1:DAJDbjz6D5BtekIsow6laVRQ9y74CPKgNInR1l+q9B0=
+github.com/ikawaha/kagome/v2 v2.4.4/go.mod h1:4yR0rtgtJwfOZsnxXx87R4i8An11v4Mj+V6dTcJmwr4=
+github.com/kurehajime/dajarep v1.9.5 h1:mT6AyjGk3+PmovpDz7VvcnR6+j2UwufpfwLUqapGs2U=
+github.com/kurehajime/dajarep v1.9.5/go.mod h1:NNvPw1++YZpcds0+Dl0oNcT6SRHUezTMQx/Sn2hsmQ8=
+golang.org/x/net v0.0.0-20210119194325-5f4716e94777/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
+golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
+golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+golang.org/x/text v0.3.4/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=

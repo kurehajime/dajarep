@@ -1,0 +1,52 @@
+<html>
+
+<body>
+    <h1>ダジャレ抽出器</h1>
+    <textarea id="input" rows="10" cols="50">人民の人民による人民のための政治
+アルミ缶の上にあるミカン
+トンネルを抜けるとそこは雪国であった
+智代子のチョコ
+布団が吹っ飛んだ
+我輩は猫である
+猫が寝転んだ
+その意見にはついていけん
+靴を靴箱に入れる
+傘を貸さない
+イカは如何なものか
+親譲りの無鉄砲で子供の時から損ばかりしている</textarea>
+    <br>
+    <button id="do">ダジャレだけを抽出</button><br>
+    <textarea id="output" rows="10" cols="50">
+</textarea>
+    <script defer>
+        async function postData(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                redirect: 'follow',
+                body: JSON.stringify(data)
+            })
+            return response.json();
+        }
+        document.querySelector("#do").onclick = () => {
+            const input = document.querySelector("#input").value;
+            const output = document.querySelector("#output");
+            const lines = input.split("\n");
+            postData('https://asia-east1-xiidec.cloudfunctions.net/dajareper',
+                { "messages": lines })
+                .then(data => {
+                    if (data.messages) {
+                        output.value = data.messages.join("\n");
+                    } else {
+                        output.value = "";
+                    }
+                });
+        }
+    </script>
+</body>
+
+</html>
