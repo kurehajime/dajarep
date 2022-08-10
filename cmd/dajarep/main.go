@@ -6,12 +6,13 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"io"
+	"os"
+	"runtime"
+
 	"github.com/kurehajime/dajarep"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/transform"
-	"io/ioutil"
-	"os"
-	"runtime"
 )
 
 func main() {
@@ -33,7 +34,7 @@ func main() {
 
 	flag.Parse()
 
-	if interactive == true {
+	if interactive {
 		fmt.Print("> ")
 	} else if len(flag.Args()) == 0 {
 		text, err = readPipe()
@@ -47,7 +48,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if interactive == false {
+	if !interactive {
 		text, err := transEnc(text, encode)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err.Error())
@@ -89,7 +90,7 @@ func main() {
 func readPipe() (string, error) {
 	stats, _ := os.Stdin.Stat()
 	if stats != nil && (stats.Mode()&os.ModeCharDevice) == 0 {
-		bytes, err := ioutil.ReadAll(os.Stdin)
+		bytes, err := io.ReadAll(os.Stdin)
 		if err != nil {
 			return "", err
 		}
@@ -114,7 +115,7 @@ func readStdin() (string, error) {
 }
 
 func readFileByArg(path string) (string, error) {
-	content, err := ioutil.ReadFile(path)
+	content, err := os.ReadFile(path)
 	if err != nil {
 		return "", err
 	}

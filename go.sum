@@ -1,4 +1,3 @@
-github.com/ikawaha/kagome v1.11.2 h1:eCWpLqv5Euqa5JcwkaobUSy6uGM8rwwMw5Su3eRepBI=
 github.com/ikawaha/kagome-dict v1.0.2 h1:RlrQcNm7AcgBrzBcZC+1sniAWxmOECdeJHpJ5G1XFlU=
 github.com/ikawaha/kagome-dict v1.0.2/go.mod h1:JCwHr4WOrGRsC2cJU3751mJvL1hIAAZVeIrkl8n3jkk=
 github.com/ikawaha/kagome-dict/ipa v1.0.2 h1:vBT1bXZbJpf1Ogw07GDlJmKQ5JyexeeIUJ5DkqcMNwo=
@@ -6,11 +5,9 @@ github.com/ikawaha/kagome-dict/ipa v1.0.2/go.mod h1:CmdUPFC1ISLK+ycFo8J6jYFVngDM
 github.com/ikawaha/kagome-dict/uni v1.1.1/go.mod h1:iipUtdM9UhHIfaY7Hq1ITLVix5OBZf/FgxMYZpGe5fg=
 github.com/ikawaha/kagome/v2 v2.4.4 h1:DAJDbjz6D5BtekIsow6laVRQ9y74CPKgNInR1l+q9B0=
 github.com/ikawaha/kagome/v2 v2.4.4/go.mod h1:4yR0rtgtJwfOZsnxXx87R4i8An11v4Mj+V6dTcJmwr4=
-golang.org/x/net v0.0.0-20210119194325-5f4716e94777 h1:003p0dJM77cxMSyCPFphvZf/Y5/NXf5fzg6ufd1/Oew=
-golang.org/x/net v0.0.0-20210119194325-5f4716e94777/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
-golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
-golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
-golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
-golang.org/x/text v0.3.4 h1:0YWbFKbhXG/wIiuHDSKpS0Iy7FSA+u45VtBMfQcFTTc=
+golang.org/x/net v0.0.0-20220809184613-07c6da5e1ced h1:3dYNDff0VT5xj+mbj2XucFst9WKk6PdGOrb9n+SbIvw=
+golang.org/x/net v0.0.0-20220809184613-07c6da5e1ced/go.mod h1:YDH+HFinaLZZlnHAfSS6ZXJJ9M9t4Dl22yv3iI2vPwk=
 golang.org/x/text v0.3.4/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+golang.org/x/text v0.3.7 h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
+golang.org/x/text v0.3.7/go.mod h1:u+2+/6zg+i71rQMx5EYifcz6MCKuco9NR6JIITiCfzQ=
 golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
