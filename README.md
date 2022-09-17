@@ -41,7 +41,7 @@ $ dajarep test.txt
 
 ## ブラウザでお試し
 
-http://kurehajime.github.io/dajarep/
+https://kurehajime.github.io/dajarep/
 
 ## インストール方法
 
