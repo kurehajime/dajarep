@@ -10,7 +10,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/theoria24/dajarep"
+	"github.com/kurehajime/dajarep"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/transform"
 )
@@ -136,7 +136,7 @@ func readFileByArg(path string) (string, error) {
 	return string(content), nil
 }
 
-//「Golangで文字コード判定」qiita.com/nobuhito/items/ff782f64e32f7ed95e43
+// 「Golangで文字コード判定」qiita.com/nobuhito/items/ff782f64e32f7ed95e43
 func transEnc(text string, encode string) (string, error) {
 	body := []byte(text)
 	var f []byte
