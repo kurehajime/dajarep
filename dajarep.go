@@ -10,14 +10,14 @@ import (
 	"github.com/ikawaha/kagome/v2/tokenizer"
 )
 
-//単語
+// 単語
 type word struct {
 	str   string
 	kana  string
 	wtype string
 }
 
-//文章
+// 文章
 type sentence struct {
 	str   string
 	kana  string
@@ -25,7 +25,7 @@ type sentence struct {
 	words []word
 }
 
-//Dajarep :駄洒落を返す
+// Dajarep :駄洒落を返す
 func Dajarep(text string, limit int, debug bool) (dajares []string, debugStrs [][]string) {
 	sentencesN := getSentences(text, tokenizer.Normal)
 	sentencesS := getSentences(text, tokenizer.Search)
@@ -41,7 +41,7 @@ func Dajarep(text string, limit int, debug bool) (dajares []string, debugStrs []
 	return dajares, debugStrs
 }
 
-//駄洒落かどうかを評価する。
+// 駄洒落かどうかを評価する。
 func isDajare(sen sentence, limit int, debug bool) (hitList []string) {
 	words := sen.words
 	for i := 0; i < len(words); i++ {
@@ -73,7 +73,7 @@ func isDajare(sen sentence, limit int, debug bool) (hitList []string) {
 
 }
 
-//置き換え可能な文字を考慮した正規表現を返す。
+// 置き換え可能な文字を考慮した正規表現を返す。
 func fixWord(text string) string {
 	text = strings.Replace(text, "ッ", "[ツッ]?", -1)
 	text = strings.Replace(text, "ァ", "[アァ]?", -1)
@@ -130,7 +130,7 @@ func fixWord(text string) string {
 	return text
 }
 
-//本文から省略可能文字を消したパターンを返す。
+// 本文から省略可能文字を消したパターンを返す。
 func fixSentence(text string) string {
 	text = strings.Replace(text, "ッ", "", -1)
 	text = strings.Replace(text, "ー", "", -1)
@@ -141,7 +141,7 @@ func fixSentence(text string) string {
 	return text
 }
 
-//テキストからsentenceオブジェクトを作る。
+// テキストからsentenceオブジェクトを作る。
 func getSentences(text string, mode tokenizer.TokenizeMode) []sentence {
 	var sentences []sentence
 	t, err := tokenizer.New(ipa.Dict())

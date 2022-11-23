@@ -39,6 +39,10 @@ $ dajarep test.txt
 イカは如何なものか
 ```
 
+## ブラウザでお試し
+
+https://kurehajime.github.io/dajarep/
+
 ## インストール方法
 
 [ここ](https://github.com/kurehajime/dajarep/releases)から実行ファイルをダウンロードできます。
