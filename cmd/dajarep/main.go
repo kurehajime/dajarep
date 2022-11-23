@@ -6,12 +6,13 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"github.com/kurehajime/dajarep"
-	"golang.org/x/net/html/charset"
-	"golang.org/x/text/transform"
 	"io/ioutil"
 	"os"
 	"runtime"
+
+	"github.com/theoria24/dajarep"
+	"golang.org/x/net/html/charset"
+	"golang.org/x/text/transform"
 )
 
 func main() {
@@ -53,12 +54,19 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-		s, d := dajarep.Dajarep(text)
+		s, d := dajarep.Dajarep(text, 2, debug)
 		for i := 0; i < len(s); i++ {
 			if !debug {
 				fmt.Println(s[i])
 			} else {
-				fmt.Println(s[i] + "[" + d[i] + "]")
+				fmt.Print(s[i] + "[")
+				for j := 0; j < len(d[i]); j++ {
+					if j != 0 {
+						fmt.Print(", ")
+					}
+					fmt.Print(d[i][j])
+				}
+				fmt.Println("]")
 			}
 		}
 	} else {
@@ -73,10 +81,17 @@ func main() {
 				break
 			}
 			text := s.Text()
-			_, d := dajarep.Dajarep(text)
+			_, d := dajarep.Dajarep(text, 2, debug)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
-					fmt.Println("-> " + d[i])
+					fmt.Print("-> [")
+					for j := 0; j < len(d[i]); j++ {
+						if j != 0 {
+							fmt.Print(", ")
+						}
+						fmt.Print(d[i][j])
+					}
+					fmt.Println("]")
 				}
 			} else {
 				fmt.Println("")

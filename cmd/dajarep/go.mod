@@ -3,9 +3,9 @@ module dajarep
 go 1.17
 
 require (
-	github.com/kurehajime/dajarep v1.9.5
-	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
-	golang.org/x/text v0.3.5
+	github.com/theoria24/dajarep v1.9.6-0.20220326080322-e08052e377e3
+	golang.org/x/net v0.0.0-20220325170049-de3da57026de
+	golang.org/x/text v0.3.7
 )
 
 require (
