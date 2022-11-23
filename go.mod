@@ -1,4 +1,4 @@
-module github.com/theoria24/dajarep
+module github.com/kurehajime/dajarep
 
 go 1.18
 
@@ -9,6 +9,4 @@ require (
 
 require (
 	github.com/ikawaha/kagome-dict v1.0.4 // indirect
-	golang.org/x/net v0.0.0-20220325170049-de3da57026de // indirect
-	golang.org/x/text v0.3.7 // indirect
 )
