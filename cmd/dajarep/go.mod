@@ -1,6 +1,6 @@
 module dajarep
 
-go 1.17
+go 1.19
 
 replace github.com/kurehajime/dajarep => ../../
 
