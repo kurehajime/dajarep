@@ -7,6 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+
 	"os"
 	"runtime"
 
@@ -54,12 +55,19 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
-		s, d := dajarep.Dajarep(text)
+		s, d := dajarep.Dajarep(text, 2, debug)
 		for i := 0; i < len(s); i++ {
 			if !debug {
 				fmt.Println(s[i])
 			} else {
-				fmt.Println(s[i] + "[" + d[i] + "]")
+				fmt.Print(s[i] + "[")
+				for j := 0; j < len(d[i]); j++ {
+					if j != 0 {
+						fmt.Print(", ")
+					}
+					fmt.Print(d[i][j])
+				}
+				fmt.Println("]")
 			}
 		}
 	} else {
@@ -74,10 +82,17 @@ func main() {
 				break
 			}
 			text := s.Text()
-			_, d := dajarep.Dajarep(text)
+			_, d := dajarep.Dajarep(text, 2, debug)
 			if len(d) > 0 {
 				for i := 0; i < len(d); i++ {
-					fmt.Println("-> " + d[i])
+					fmt.Print("-> [")
+					for j := 0; j < len(d[i]); j++ {
+						if j != 0 {
+							fmt.Print(", ")
+						}
+						fmt.Print(d[i][j])
+					}
+					fmt.Println("]")
 				}
 			} else {
 				fmt.Println("")
@@ -122,7 +137,7 @@ func readFileByArg(path string) (string, error) {
 	return string(content), nil
 }
 
-//「Golangで文字コード判定」qiita.com/nobuhito/items/ff782f64e32f7ed95e43
+// 「Golangで文字コード判定」qiita.com/nobuhito/items/ff782f64e32f7ed95e43
 func transEnc(text string, encode string) (string, error) {
 	body := []byte(text)
 	var f []byte

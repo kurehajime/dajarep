@@ -1,11 +1,7 @@
 module example.com/cloudfunction
 
-go 1.16
+go 1.19
 
-require github.com/kurehajime/dajarep v1.9.5
+replace github.com/kurehajime/dajarep => ../../
 
-require (
-	github.com/ikawaha/kagome-dict v1.0.2 // indirect
-	github.com/ikawaha/kagome-dict/ipa v1.0.2 // indirect
-	github.com/ikawaha/kagome/v2 v2.4.4 // indirect
-)
+require github.com/kurehajime/dajarep v0.0.0
