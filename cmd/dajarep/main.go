@@ -11,9 +11,9 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/kurehajime/dajarep"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/transform"
+	"local.local/dajarep"
 )
 
 func main() {
