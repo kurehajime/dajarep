@@ -47,11 +47,16 @@ https://kurehajime.github.io/dajarep/
 
 [ここ](https://github.com/kurehajime/dajarep/releases)から実行ファイルをダウンロードできます。
 
+macOSで「Appleは、“dajarep”にMacに損害を与えたり、プライバシーを侵害する可能性のあるマルウェアが含まれていないことを検証できませんでした。」と表示される場合は、実行前に以下を実行してください。
+
+```sh
+xattr -d com.apple.quarantine ./dajarep
+```
 
 Go言語の開発環境がある場合はgo でもインストールできます。
 
 ```
- go install github.com/kurehajime/dajarep/cmd/dajarep@v1.9.4
+ go install github.com/kurehajime/dajarep/cmd/dajarep@latest
 ```
 
 ## オプション
