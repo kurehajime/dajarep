@@ -56,7 +56,7 @@ xattr -d com.apple.quarantine ./dajarep
 Go言語の開発環境がある場合はgo でもインストールできます。
 
 ```
- go install github.com/kurehajime/dajarep/cmd/dajarep@latest
+go install github.com/kurehajime/dajarep/cmd/dajarep@v1.10.1
 ```
 
 ## オプション
