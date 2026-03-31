@@ -17,9 +17,6 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v3
       -
-        name: Install safe-chain
-        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
-      -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v3
         with:
